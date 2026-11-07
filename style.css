@@ -1,0 +1,254 @@
+/*
+  Extra CSS learned outside class (replace with your real sources):
+  - CSS variables, linear-gradient, flexbox, grid, border-radius, backdrop-filter,
+    rgba() transparency, position: sticky, media queries.
+  Source: MDN Web Docs - https://developer.mozilla.org/en-US/docs/Web/CSS
+*/
+
+:root {
+  --text: #f2f4f7;
+  --muted: #c3c8d0;
+  --panel: rgba(0, 0, 0, 0.38);
+  --panel-line: rgba(255, 255, 255, 0.14);
+  --accent: #7cc4e8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text);
+  /* smooth gradient from black to gray */
+  background: linear-gradient(180deg, #000000 0%, #2b2b2b 50%, #5c5c5c 100%);
+}
+
+h1, h2 {
+  font-family: "Sora", "Segoe UI", Arial, sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* ---------- Top bar ---------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--panel-line);
+}
+
+.topbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 16px 24px;
+}
+
+.brand {
+  font-family: "Sora", Arial, sans-serif;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.menu { display: flex; gap: 8px; }
+
+.menu a {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 6px 16px;
+  border-radius: 20px;
+}
+
+.menu a:hover { color: var(--text); background-color: rgba(255, 255, 255, 0.1); }
+
+.menu a.active { color: #000; background-color: var(--accent); }
+
+/* ---------- Layout ---------- */
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 40px;
+  padding: 56px 0 40px;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+.hero h1 { font-size: 2.8rem; margin-bottom: 16px; }
+.tagline { margin: 0 0 12px; font-size: 1.05rem; color: var(--muted); }
+.tagline strong { color: var(--text); }
+.about { margin: 0 0 22px; color: var(--muted); max-width: 480px; }
+
+.links { display: flex; gap: 12px; }
+
+.links a {
+  font-size: 0.85rem;
+  color: var(--text);
+  text-decoration: none;
+  padding: 8px 18px;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+}
+
+.links a:hover { background-color: var(--accent); color: #000; }
+
+.photo {
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  background-color: #2b2b2b;
+}
+
+/* ---------- Horizontal section panels ---------- */
+.panel {
+  width: 100%;
+  margin-bottom: 24px;
+  padding: 26px 30px;
+  background-color: var(--panel);
+  border: 1px solid var(--panel-line);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+}
+
+.panel h2 { font-size: 1.25rem; margin-bottom: 18px; }
+.panel p { margin: 0; color: var(--muted); }
+
+/* Background cards in a horizontal row */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.card {
+  padding: 14px 16px;
+  background-color: rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+}
+
+.card strong { display: block; }
+.card .desc { font-size: 0.85rem; color: var(--muted); }
+.status { display: inline-block; margin-top: 6px; font-size: 0.75rem; color: var(--accent); }
+
+/* Soft skills as horizontal chips */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skills li {
+  padding: 6px 16px;
+  border: 1px solid var(--panel-line);
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+/* Email link */
+.email-link {
+  color: var(--accent);
+  font-size: 1.05rem;
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent);
+}
+
+.email-link:hover { color: #fff; border-bottom-style: solid; }
+
+/* Table */
+table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+
+th {
+  padding: 0 8px 10px 0;
+  text-align: left;
+  font-size: 0.8rem;
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
+}
+
+td { padding: 10px 8px 10px 0; border-bottom: 1px solid var(--panel-line); }
+td:nth-child(2) { color: var(--muted); }
+
+td a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
+td a:hover { color: #fff; border-bottom-style: solid; }
+
+/* ---------- Contact page ---------- */
+.page-title { padding: 56px 0 24px; }
+.page-title h1 { font-size: 2.3rem; margin-bottom: 10px; }
+.page-title p { margin: 0; color: var(--muted); }
+
+form { display: flex; flex-direction: column; max-width: 520px; }
+
+label { margin-top: 16px; margin-bottom: 4px; font-size: 0.85rem; font-weight: 600; color: var(--accent); }
+
+input, textarea {
+  padding: 10px 12px;
+  font: inherit;
+  color: var(--text);
+  background-color: rgba(0, 0, 0, 0.45);
+  border: 1px solid var(--panel-line);
+  border-radius: 6px;
+}
+
+input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+button {
+  align-self: flex-start;
+  margin-top: 24px;
+  padding: 10px 26px;
+  font: inherit;
+  font-weight: 600;
+  color: #000;
+  background-color: var(--accent);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover { background-color: #fff; }
+
+footer {
+  max-width: 860px;
+  margin: 24px auto 0;
+  padding: 24px;
+  border-top: 1px solid var(--panel-line);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+footer a { color: var(--text); }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .hero { grid-template-columns: 1fr; }
+  .photo { order: -1; }
+  .hero h1 { font-size: 2.2rem; }
+  .panel { padding: 20px; }
+}
